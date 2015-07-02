@@ -2,109 +2,100 @@ package com.joulebug.readability;
 
 /**
  * Created with IntelliJ IDEA.
- * User: josephelliott
- * Date: 12/19/13
- * Time: 10:31
+ * User: ShraddhaRathod
+ * Date: 6/26/2015
+ * Time:
  * To change this template use File | Settings | File Templates.
  */
 
-/*
-{
-    "content" <div class=\"article-text\">\n<p>I'm idling outside Diamante's, [snip] ...</p></div>",
-    "domain": "www.gq.com",
-    "author": "Rafi Kohan",
-    "url": "http://www.gq.com/sports/profiles/201202/david-diamante-interview-cigar-lounge-brooklyn-new-jersey-nets?currentPage=all",
-    "short_url": "http://rdd.me/g3jcb1sr",
-    "title": "Blowing Smoke with Boxing's Big Voice",
-    "excerpt": "I'm idling outside Diamante's, a cigar lounge in Fort Greene, waiting for David Diamante, and soon I smell him coming. It's late January but warm. A motorcycle growls down the Brooklyn side street,&hellip;",
-    "direction": "ltr",
-    "word_count": 2892,
-    "total_pages": 1,
-    "date_published": null,
-    "dek": "Announcer <strong>David Diamante</strong>, the new voice of the New Jersey (soon Brooklyn) Nets, has been calling boxing matches for years. On the side, he owns a cigar lounge in the heart of Brooklyn. We talk with Diamante about his new gig and the fine art of cigars",
-    "lead_image_url": "http://www.gq.com/images/entertainment/2012/02/david-diamante/diamante-628.jpg",
-    "next_page_id": null,
-    "rendered_pages": 1
-}
- */
+import java.lang.reflect.Array;
+
+/**
+ {
+ "structure_type": "building",
+ "denominator_name": "sqft",
+ "data_type": "electric",
+ "unit": "btu"
+ "filters": [
+    {
+ "name": "sqft",
+ "operation": ">",
+ "value": "2000"
+     },
+
+    {
+ "name": "n_bedrooms",
+ "operation": "=",
+ "value": "2"
+    },
+
+    {
+ "name": "building_type",
+ "operation": "=",
+ "value": "lowrise"
+    }
+ ]
+ }
+
+  */
 public class Parser {
 
-    private String content;
-    private String domain;
-    private String author;
-    private String url;
-    private String short_url;
-    private String title;
-    private String excerpt;
-    private String direction;
-    private Integer word_count;
-    private Integer total_pages;
-    private String date_published;
-    private String dek;
-    private String lead_image_url;
-    private String next_page_id;
-    private Integer rendered_pages;
+    private String structure_type;
+    private String denominator_name;
+    private String data_type;
+    private String unit;
+    private String[] filters;
+    private String name;
+    private String operation;
+    private String value;
 
-
-    public String getContent()
-    {
-        return content;
+    public String getStructure_type() {
+        return structure_type;
     }
 
-    public void setContent(String content)
-    {
-        this.content = content;
+    public void setAccount_number(String structure_type) {
+        this.structure_type = structure_type;
     }
 
-    public String getDomain()
-    {
-        return domain;
+    public String getDenominator_name() {
+        return denominator_name;
     }
 
-    public void setDomain(String domain)
-    {
-        this.domain = domain;
+    public void setDenominator_name(String denominator_name) {
+        this.denominator_name = denominator_name;
     }
 
-    public String getAuthor()
-    {
-        return author;
+    public String getData_type() {
+        return data_type;
     }
 
-    public void setAuthor(String author)
-    {
-        this.author = author;
+    public void setData_type(String data_type) {
+        this.data_type = data_type;
     }
 
-    public String getUrl()
-    {
-        return url;
+    public String getUnit() {
+        return unit;
     }
 
-    public void setUrl(String url)
-    {
-        this.url = url;
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
-
-    public String getShort_url()
+    public String[] getFilters()
     {
-        return short_url;
+        return filters;
     }
-
-    public void setShort_url(String short_url)
+    public void setFilters(String[] filters, String name, String operation, String value)
     {
-        this.short_url = short_url;
-    }
 
-    public String getTitle()
-    {
-        return title;
-    }
+        this.filters = new String [3];
+        this.name = name;
+        this.operation = operation;
+        this.value = value;
 
-    public void setTitle(String title)
-    {
-        this.title = title;
-    }
+        filters[0] = name;
+        filters[1] = operation;
+        filters[2] = value;
 
+    }
 
 }

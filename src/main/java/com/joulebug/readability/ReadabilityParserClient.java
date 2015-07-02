@@ -48,9 +48,9 @@ public class ReadabilityParserClient {
 
     public Parser parse(String url, Integer pages, String id) {
         ArrayList<RequestParameter> parameterList = new ArrayList<RequestParameter>();
-        parameterList.add( new RequestParameter("url",url));
+        parameterList.add(new RequestParameter("url",url));
         parameterList.add(new RequestParameter("max_pages",pages.toString()));
-        parameterList.add( new RequestParameter("id",id));
+        parameterList.add(new RequestParameter("id",id));
         return get(Parser.class,"parser",parameterList);
     }
 
