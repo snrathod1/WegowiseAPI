@@ -15,9 +15,11 @@ import com.google.gson.Gson
  */
 object CreateAMeterTest {
   def CAMTest(): Unit = {
+    println("Please enter the data file:")
+    val name = Console.readLine
 
     val gson = new Gson()
-    val json = "{\n    \"account_number\": \"123456789\",\n    \"utility_company_id\": 231,\n    \"username\": \"jane_smith\",\n    \"password\": \"pasword123\",\n    \"data_type\": \"Gas\"\n}"
+    val json = scala.io.Source.fromFile(name).mkString
     val parsed = gson.fromJson(json, new CreateAMeter().getClass)
 
     println("The account number is " + parsed.getAccount_number() + ".")

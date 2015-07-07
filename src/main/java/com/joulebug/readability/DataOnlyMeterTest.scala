@@ -19,8 +19,12 @@ import com.google.gson.Gson
  */
 object DataOnlyMeterTest {
   def DOMTest (): Unit = {
+
+    println("Please enter the data file:")
+    val name = Console.readLine
+
     val gson = new Gson()
-    val json = "{\n    \"coverage\": \"none\",\n    \"data_type\": \"Gas\",\n    \"for_heating\": false,\n    \"id\": 1,\n    \"notes\": \"Some notes\",\n    \"utility_company\":\n      {\n        \"id\": 1,\n        \"name\": \"UtilityCo1\"\n      }\n  }"
+    val json = scala.io.Source.fromFile(name).mkString
     val parsed = gson.fromJson(json, new DataOnlyMeter().getClass)
 
     println("The coverage is " + parsed.getCoverage() + ".")

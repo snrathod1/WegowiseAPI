@@ -17,8 +17,12 @@ object MeterRawDatapointTest {
 }
  */
   def MRDPTest(): Unit = {
+
+    println("Please enter the data file:")
+    val name = Console.readLine
+
     val gson = new Gson()
-    val json = "{\n  \"start_date\": \"2012-02-01\",\n  \"end_date\": \"2012-03-04\",\n  \"btu\": \"100000\",\n  \"total_charge\": \"300.0\",\n  \"delivery_charge\": \"100.0\",\n  \"fixed_charge\": \"80.0\"\n}"
+    val json = scala.io.Source.fromFile(name).mkString
     val parsed = gson.fromJson(json, new MeterRawDatapoint().getClass)
 
     println("The start date is " + parsed.getStart_date() + ".")

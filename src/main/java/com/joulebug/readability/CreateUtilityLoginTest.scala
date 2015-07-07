@@ -15,8 +15,11 @@ import com.google.gson.Gson
 object CreateUtilityLoginTest {
   def CULTest(): Unit = {
 
+    println("Please enter the data file:")
+    val name = Console.readLine
+
     val gson = new Gson()
-    val json = "{\n    \"username\": \"jane_smith\",\n    \"password\": \"pasword123\",\n    \"utility_company_id\": 231\n}"
+    val json = scala.io.Source.fromFile(name).mkString
     val parsed = gson.fromJson(json, new CreateUtilityLogin().getClass)
 
     println("The username is " + parsed.getUsername() + ".")

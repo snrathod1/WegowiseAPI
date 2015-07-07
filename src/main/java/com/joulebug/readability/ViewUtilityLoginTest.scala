@@ -22,9 +22,12 @@ import com.google.gson.Gson
 object ViewUtilityLoginTest {
 
   def VULTest(): Unit = {
+    println("Please enter the data file:")
+    val name = Console.readLine
 
     val gson = new Gson()
-    val json = "{\n    \"id\": 1,\n    \"status\": \"success\",\n    \"username\": \"abcproperties\",\n    \"utility_company\": {\n        \"name\": \"NSTAR\"\n    },\n    \"account_numbers\": [\n        \"abc123\",\n        \"xyz987\"\n    ]\n}"
+    val json = scala.io.Source.fromFile(name).mkString
+
     val parsed = gson.fromJson(json, new ViewUtilityLogin().getClass)
 
     println("The ID is " + parsed.getId() + ".")
