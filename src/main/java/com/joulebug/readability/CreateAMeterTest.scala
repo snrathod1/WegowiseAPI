@@ -20,12 +20,17 @@ object CreateAMeterTest {
 
     val gson = new Gson()
     val json = scala.io.Source.fromFile(name).mkString
-    val parsed = gson.fromJson(json, new CreateAMeter().getClass)
+    val array: Array[CreateAMeter] = gson.fromJson(json, Array[CreateAMeter]().getClass)
 
-    println("The account number is " + parsed.getAccount_number() + ".")
-    println("The utility company ID is " + parsed.getUtility_company() + ".")
-    println("The username is " + parsed.getUsername() + ".")
-    println("The password is " + parsed.getPassword + ".")
-    println("The data type is " + parsed.getData_type + ".")
+
+
+    for (parsed <- array) {
+
+      println("The account number is " + parsed.getAccount_number() + ".")
+      println("The utility company ID is " + parsed.getUtility_company() + ".")
+      println("The username is " + parsed.getUsername() + ".")
+      println("The password is " + parsed.getPassword() + ".")
+      println("The data type is " + parsed.getData_type() + ".")
+    }
   }
 }

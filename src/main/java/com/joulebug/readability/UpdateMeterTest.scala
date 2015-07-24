@@ -13,10 +13,13 @@ object UpdateMeterTest {
 
     val gson = new Gson()
     val json = scala.io.Source.fromFile(name).mkString
-    val parsed = gson.fromJson(json, new UpdateMeter().getClass)
+    val array: Array[UpdateMeter] = gson.fromJson(json, Array[UpdateMeter]().getClass)
 
-    println("Is there heating? " + parsed.getFor_heating())
 
+
+    for (parsed <- array) {
+      println("Is there heating? " + parsed.getFor_heating())
+    }
 
   }
 

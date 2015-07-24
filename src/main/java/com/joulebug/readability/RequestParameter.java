@@ -7,8 +7,8 @@ package com.joulebug.readability;
  * Time: 11:53
  * To change this template use File | Settings | File Templates.
  */
-public class RequestParameter {
 
+public class RequestParameter {
     String key;
     String value;
 
@@ -19,23 +19,23 @@ public class RequestParameter {
     }
 
     public String getKey()
-    {
-        return key;
-    }
+        {
+            return key;
+        }
 
     public void setKey(String key)
-    {
-        this.key = key;
-    }
+        {
+            this.key = key;
+        }
 
     public String getValue()
-    {
-        return value;
-    }
+        {
+            return value;
+        }
 
     public void setValue(String value)
-    {
-        this.value = value;
-    }
+        {
+            this.value = value;
+        }
 
 }

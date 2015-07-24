@@ -20,11 +20,16 @@ object CreateUtilityLoginTest {
 
     val gson = new Gson()
     val json = scala.io.Source.fromFile(name).mkString
-    val parsed = gson.fromJson(json, new CreateUtilityLogin().getClass)
+    val array: Array[CreateUtilityLogin] = gson.fromJson(json, Array[CreateUtilityLogin]().getClass)
 
-    println("The username is " + parsed.getUsername() + ".")
-    println("The password is " + parsed.getPassword() + ".")
-    println("The utility company ID is " + parsed.getUtility_company_id() + ".")
+
+
+    for (parsed <- array) {
+
+      println("The username is " + parsed.getUsername() + ".")
+      println("The password is " + parsed.getPassword() + ".")
+      println("The utility company ID is " + parsed.getUtility_company_id() + ".")
+    }
 
   }
 

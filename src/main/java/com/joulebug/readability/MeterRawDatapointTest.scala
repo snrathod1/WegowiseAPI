@@ -23,15 +23,18 @@ object MeterRawDatapointTest {
 
     val gson = new Gson()
     val json = scala.io.Source.fromFile(name).mkString
-    val parsed = gson.fromJson(json, new MeterRawDatapoint().getClass)
+    val array: Array[MeterRawDatapoint] = gson.fromJson(json, Array[MeterRawDatapoint]().getClass)
 
-    println("The start date is " + parsed.getStart_date() + ".")
-    println("The end date is " + parsed.getEnd_date() + ".")
-    println("The btu is " + parsed.getBtu() + ".")
-    println("The total charge is " + parsed.getTotal_charge() + ".")
-    println("The delivery charge is " + parsed.getDelivery_charge() + ".")
-    println("The fixed charge is " + parsed.getFixed_charge() + ".")
 
+
+    for (parsed <- array) {
+      println("The start date is " + parsed.getStart_date() + ".")
+      println("The end date is " + parsed.getEnd_date() + ".")
+      println("The btu is " + parsed.getBtu() + ".")
+      println("The total charge is " + parsed.getTotal_charge() + ".")
+      println("The delivery charge is " + parsed.getDelivery_charge() + ".")
+      println("The fixed charge is " + parsed.getFixed_charge() + ".")
+    }
 
   }
 }
