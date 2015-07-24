@@ -26,7 +26,7 @@ import javax.lang.model.type.NullType;
     "peak_kwh": null,
   }
  */
-public class MeterRawData {
+public class WegoDataRawData {
     private String delivery_charge;
     private String end_date;
     private String fuel_charge;
@@ -34,7 +34,7 @@ public class MeterRawData {
     private String start_date;
     private String gallons;
     private String kwh;
-    private String btu;
+    private Integer btu;
     private String demand_charge;
     private String demand_kw;
     private String fixed_charge;
@@ -99,11 +99,11 @@ public class MeterRawData {
         this.kwh = kwh;
     }
 
-    public String getBtu(){
+    public Integer getBtu(){
         return btu;
     }
 
-    public void setBtu(String btu) {
+    public void setBtu(Integer btu) {
         this.btu = btu;
     }
 

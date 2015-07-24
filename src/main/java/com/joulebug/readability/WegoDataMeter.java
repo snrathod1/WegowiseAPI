@@ -17,7 +17,7 @@ package com.joulebug.readability;
       }
   }
  */
-public class DataOnlyMeter {
+public class WegoDataMeter {
     private String coverage;
     private String data_type;
     private Boolean for_heating;
