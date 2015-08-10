@@ -96,12 +96,21 @@ public class WegoDataClient {
             } catch (com.google.gson.JsonSyntaxException e) {
                 System.out.println("Invalid JSon");
 
+            } catch (NullPointerException e) {
+                System.out.println("Invalid data");
             }
         } else {
             if (response != null) {
-                Gson gSon = new Gson();
-                String jSon = response.getBody();
-                WegoViewMeterError message = gSon.fromJson(jSon, WegoViewMeterError.class);   //error message from Wego
+                try {
+                    Gson gSon = new Gson();
+                    String jSon = response.getBody();
+                    WegoViewMeterError message = gSon.fromJson(jSon, WegoViewMeterError.class);   //error message from Wego
+                } catch (com.google.gson.JsonSyntaxException e) {
+                    System.out.println("Json Error");
+
+                } catch (NullPointerException e) {
+                    System.out.println("Invalid data");
+                }
 
             }  else {
                 System.out.println("Status Code is: " + response.getCode());           //what went wrong
@@ -113,19 +122,19 @@ public class WegoDataClient {
     }
     //Parsing the code
 
-    protected WegoDataMeter[] getDataOnlyMeter() {
+    public WegoDataMeter[] getDataOnlyMeter() {
         System.out.println("DataOnlyMeter: ");
         return get(WegoDataMeter[].class, "meters");
 
 
     }
-    public WegoDataMeter[] getWegoDataMeterWithID(Integer IDin) {
+    public WegoDataMeter getWegoDataMeterWithID(Integer IDin) {
         System.out.println("DataMeterWithID: ");
-        return get(WegoDataMeter[].class, "meters" + IDin);
+        return get(WegoDataMeter.class, "meters/" + IDin);
 
     }
-    public ViewUtilityLogin[] getViewLogin(Integer IDin) {
-        return get(ViewUtilityLogin[].class, "utility_logins/" + IDin);
+    public ViewUtilityLogin getViewLogin(Integer IDin) {
+        return get(ViewUtilityLogin.class, "utility_logins/" + IDin);
 
     }
 
@@ -136,14 +145,14 @@ public class WegoDataClient {
 
 
     }
-    public WegoDataRawData[] getMeterRawDataPoint (Integer IDin) {
+    public WegoDataRawData getMeterRawDataPoint (Integer IDin) {
         System.out.println("MeterRawDataPoint: ");
-        return get(WegoDataRawData[].class, "meters/" + IDin + "/raw_data" + IDin);
+        return get(WegoDataRawData.class, "meters/" + IDin + "/raw_data" + IDin);
 
     }
-    public WegoDataRawData[] getMeterRawDatum (Integer IDin) {
+    public WegoDataRawData getMeterRawDatum (Integer IDin) {
         System.out.println("MeterRawDatum: ");
-        return get(WegoDataRawData[].class, "meters/" + IDin + "/latest_datum");
+        return get(WegoDataRawData.class, "meters/" + IDin + "/latest_datum");
 
 
     }
