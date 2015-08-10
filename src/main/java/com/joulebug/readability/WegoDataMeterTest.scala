@@ -1,5 +1,8 @@
+/*
 package com.joulebug.readability
 import com.google.gson.Gson
+import WegoDataMeter
+
 /*
 {
     "coverage": "none",
@@ -39,3 +42,4 @@ object WegoDataMeterTest {
   }
 
 }
+**/

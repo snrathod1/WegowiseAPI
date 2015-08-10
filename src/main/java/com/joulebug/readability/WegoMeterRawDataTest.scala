@@ -1,6 +1,8 @@
+/*
 package com.joulebug.readability
 
 import com.google.gson.Gson
+import WegoDataRawData
 
 /**
  * Created by shraddharathod on 6/30/15.
@@ -58,3 +60,4 @@ object WegoMeterRawDataTest {
   }
 
 }
+**/

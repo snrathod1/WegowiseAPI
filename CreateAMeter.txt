@@ -1,0 +1,17 @@
+{
+    "delivery_charge": null,
+    "end_date": "2014-01-31",
+    "fuel_charge": null,
+    "total_charge": "10.0",
+    "start_date": "2014-01-01",
+    "gallons": null,
+    "kwh": "0.292997363023733",
+    "btu": 1000,
+    "demand_charge": null,
+    "demand_kw": null,
+    "fixed_charge": null,
+    "off_peak_charge": null,
+    "off_peak_kwh": null,
+    "peak_charge": null,
+    "peak_kwh": null,
+  }

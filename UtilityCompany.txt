@@ -1,0 +1,35 @@
+[
+    {
+        "coverage": "none",
+        "data_type": "Gas",
+        "for_heating": false,
+        "id": 1,
+        "notes": "Some notes",
+        "utility_company": {
+            "id": 1,
+            "name": "UtilityCo1"
+        }
+    },
+    {
+        "coverage": "none",
+        "data_type": "Electric",
+        "for_heating": false,
+        "id": 2,
+        "notes": "Some notes",
+        "utility_company": {
+            "id": 2,
+            "name": "UtilityCo2"
+        }
+    },
+    {
+        "coverage": "none",
+        "data_type": "Water",
+        "for_heating": false,
+        "id": 3,
+        "notes": "Some notes",
+        "utility_company": {
+            "id": 3,
+            "name": "UtilityCo3"
+        }
+    }
+]

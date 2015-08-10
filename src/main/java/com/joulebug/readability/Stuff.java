@@ -27,3 +27,9 @@ public class Stuff {
     //return java object
 
 }
+
+/*
+errors to handle:
+- If token entry was wrong
+-
+ */
