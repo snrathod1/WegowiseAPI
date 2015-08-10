@@ -46,6 +46,7 @@ object WegoDataClientTest {
     }
 
     val arrayThree: Array[ViewUtilityLogin] = WDC.getViewLogin(id)
+
     for (parsed <- arrayThree) {
       println("ID: " + parsed.getId())
       println("Status: " + parsed.getStatus())
