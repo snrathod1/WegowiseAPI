@@ -47,126 +47,66 @@ object WegoDataClientTest {
 
     val arrayThree: Array[ViewUtilityLogin] = WDC.getViewLogin(id)
     for (parsed <- arrayThree) {
-      println(parsed.getId())
-      println(parsed.getStatus())
-      println(parsed.getUsername())
-      println(parsed.getUtility_company().getName())
-      println(parsed.getAccount_numbers())
+      println("ID: " + parsed.getId())
+      println("Status: " + parsed.getStatus())
+      println("Username: " + parsed.getUsername())
+      println("Utility Company Name: " + parsed.getUtility_company().getName())
+      println("Account Numbers: " + parsed.getAccount_numbers())
     }
     val arrayFour: Array[WegoDataRawData] = WDC.getMeterRawData(id)
-      for(parsed <- arrayFour) {
+    for (parsed <- arrayFour) {
 
-        println(parsed.getDelivery_charge())
-        println(parsed.getEnd_date())
-        println(parsed.getFuel_charge())
-        println(parsed.getTotal_charge())
-        println(parsed.getStart_date())
-        println(parsed.getGallons())
-        println(parsed.getKwh())
-        println(parsed.getBtu())
-        println(parsed.getDemand_charge())
-        println(parsed.getDemand_kw())
-        println(parsed.getFixed_charge())
-        println(parsed.getOff_peak_charge())
-        println(parsed.getOff_peak_kwh())
-        println(parsed.getPeak_charge())
-        println(parsed.getPeak_kwh())
+      println("Delivery Charge: " + parsed.getDelivery_charge())
+      println("End date: " + parsed.getEnd_date())
+      println("Fuel Charge: " + parsed.getFuel_charge())
+      println("Total Charge: " + parsed.getTotal_charge())
+      println("Start Date: " + parsed.getStart_date())
+      println("Gallons: " + parsed.getGallons())
+      println("Kwh: " + parsed.getKwh())
+      println("Btu: " + parsed.getBtu())
+      println("Demand Charge: " + parsed.getDemand_charge())
+      println("Demand kw: " + parsed.getDemand_kw())
+      println("Fixed Charge: " + parsed.getFixed_charge())
+      println("Off Peak Charge: " + parsed.getOff_peak_charge())
+      println("Off Peak kwh: " + parsed.getOff_peak_kwh())
+      println("Peak Charge: " + parsed.getPeak_charge())
+      println("Peak kwh: " + parsed.getPeak_kwh())
     }
 
     val arrayFive: Array[WegoDataRawData] = WDC.getMeterRawDataPoint(id)
-    for(parsed <- arrayFive) {
-      println(parsed.getDelivery_charge())
-      println(parsed.getEnd_date())
-      println(parsed.getFuel_charge())
-      println(parsed.getTotal_charge())
-      println(parsed.getStart_date())
-      println(parsed.getGallons())
-      println(parsed.getKwh())
+    for (parsed <- arrayFive) {
+      println("Delivery Charge: " + parsed.getDelivery_charge())
+      println("End date: " + parsed.getEnd_date())
+      println("Fuel Charge: " + parsed.getFuel_charge())
+      println("Total Charge: " + parsed.getTotal_charge())
+      println("Start Date: " + parsed.getStart_date())
+      println("Gallons: " + parsed.getGallons())
+      println("Kwh: " + parsed.getKwh())
     }
 
 
 
     val arraySix: Array[WegoDataRawData] = WDC.getMeterRawDatum(id)
-    for(parsed <- arraySix) {
-      println(parsed.getDelivery_charge())
-      println(parsed.getEnd_date())
-      println(parsed.getFuel_charge())
-      println(parsed.getTotal_charge())
-      println(parsed.getStart_date())
-      println(parsed.getGallons())
-      println(parsed.getKwh())
-      println(parsed.getBtu())
-      println(parsed.getDemand_charge())
-      println(parsed.getDemand_kw())
-      println(parsed.getFixed_charge())
-      println(parsed.getOff_peak_charge())
-      println(parsed.getOff_peak_kwh())
-      println(parsed.getPeak_charge())
-      println(parsed.getPeak_kwh())
+    for (parsed <- arraySix) {
 
+      println("Delivery Charge: " + parsed.getDelivery_charge())
+      println("End date: " + parsed.getEnd_date())
+      println("Fuel Charge: " + parsed.getFuel_charge())
+      println("Total Charge: " + parsed.getTotal_charge())
+      println("Start Date: " + parsed.getStart_date())
+      println("Gallons: " + parsed.getGallons())
+      println("Kwh: " + parsed.getKwh())
+      println("Btu: " + parsed.getBtu())
+      println("Demand Charge: " + parsed.getDemand_charge())
+      println("Demand kw: " + parsed.getDemand_kw())
+      println("Fixed Charge: " + parsed.getFixed_charge())
+      println("Off Peak Charge: " + parsed.getOff_peak_charge())
+      println("Off Peak kwh: " + parsed.getOff_peak_kwh())
+      println("Peak Charge: " + parsed.getPeak_charge())
+      println("Peak kwh: " + parsed.getPeak_kwh())
     }
 
-    }
-
-
-    //wegodatawith id
-
-
-
-    //getViewlogin
-    //data.getId();
-    //data.getStatus();
-    //data.getUsername();
-    //data.getUtility_company().getName();
-    //data.getAccount_numbers();
-
-    //getMeterRawData
-//    parsed.getDelivery_charge();
-//                    parsed.getEnd_date();
-//                    parsed.getFuel_charge();
-//                    parsed.getTotal_charge();
-//                    parsed.getStart_date();
-//                    parsed.getGallons();
-//                    parsed.getKwh();
-//                    parsed.getBtu();
-//                    parsed.getDemand_charge();
-//                    parsed.getDemand_kw();
-//                    parsed.getFixed_charge();
-//                    parsed.getOff_peak_charge();
-//                    parsed.getOff_peak_kwh();
-//                    parsed.getPeak_charge();
-//                    parsed.getPeak_kwh();
-//
-
-    //getmeterrawdatapoint
-//    data.getDelivery_charge();
-//            data.getEnd_date();
-//          data.getFuel_charge();
-//            data.getTotal_charge();
-//           data.getStart_date();
-//            data.getGallons();
-//            data.getKwh();
-
-    //getmeterrawdatum
-
-
-//          data.getDelivery_charge();
-//          data.getEnd_date();
-//          data.getFuel_charge();
-//          data.getTotal_charge();
-//          data.getStart_date();
-//          data.getGallons();
-//          data.getKwh();
-//          data.getBtu();
-//          data.getDemand_charge();
-//          data.getDemand_kw();
-//          data.getFixed_charge();
-//          data.getOff_peak_charge();
-//          data.getOff_peak_kwh();
-//          data.getPeak_charge();
-//          data.getPeak_kwh();
-
+  }
 }
-
 
 
