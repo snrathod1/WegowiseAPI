@@ -85,7 +85,7 @@ public class WegoDataClient {
         OAuthRequest request = new OAuthRequest(Verb.GET, PROTECTED_RESOURCE_URL + end);
         this.service.signRequest(accessToken, request);
         Response response = request.send();
-        System.out.println(response.getBody());
+        //System.out.println(response.getBody());
         //if response results in a 200 code
         if (response.isSuccessful()) {
             try {
@@ -141,9 +141,9 @@ public class WegoDataClient {
     }
 
 
-    public WegoDataRawData[] getMeterRawData (Integer IDin) {
+    public WegoRawDataPoint[] getMeterRawData (Integer IDin) {
         System.out.println("MeterRawData: ");
-        return get(WegoDataRawData[].class, "meters/" + IDin + "/raw_data");
+        return get(WegoRawDataPoint[].class, "meters/" + IDin + "/raw_data");
 
 
     }
