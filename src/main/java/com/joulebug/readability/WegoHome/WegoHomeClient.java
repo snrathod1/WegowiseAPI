@@ -1,6 +1,7 @@
-package com.joulebug.readability;
+package com.joulebug.readability.WegoHome;
 
 import com.google.gson.Gson;
+import com.joulebug.readability.*;
 import org.scribe.builder.ServiceBuilder;
 import org.scribe.model.*;
 import org.scribe.oauth.OAuthService;
@@ -8,13 +9,10 @@ import org.scribe.oauth.OAuthService;
 import java.util.Scanner;
 
 /**
- * Created by shraddharathod on 7/16/15.
- *
+ * Created by shraddharathod on 8/12/15.
  */
-
-//gets data from WegoWise API and parses it
-public class WegoDataClient {
-    private static final String PROTECTED_RESOURCE_URL = "https://www.wegowise.com/api/v1/wego_data/";
+public class WegoHomeClient {
+    private static final String PROTECTED_RESOURCE_URL = "https://www.wegowise.com/";
 
     private String oauthKey;
     private String oauthSecret;
@@ -25,14 +23,14 @@ public class WegoDataClient {
 
 
     //input key and secret from your app
-    public WegoDataClient(String key, String secret) {
+    public WegoHomeClient(String key, String secret) {
         this.oauthKey = key;
         this.oauthSecret = secret;
         this.service = new ServiceBuilder()
-             .provider(WegowiseApi.class)
-             .apiKey(this.oauthKey)
-             .apiSecret(this.oauthSecret)
-             .build();
+                .provider(WegowiseApi.class)
+                .apiKey(this.oauthKey)
+                .apiSecret(this.oauthSecret)
+                .build();
 
     }
     //token request, verification, and data retrieval; parsing data
@@ -89,10 +87,10 @@ public class WegoDataClient {
         //if response results in a 200 code
         if (response.isSuccessful()) {
             try {
-               Gson gson = new Gson();
-               String json = response.getBody();
-               T data = gson.fromJson(json, name);     //parses Json
-               return data;
+                Gson gson = new Gson();
+                String json = response.getBody();
+                T data = gson.fromJson(json, name);     //parses Json
+                return data;
 
             } catch (com.google.gson.JsonSyntaxException e) {
                 System.out.println("Invalid JSon");
@@ -124,38 +122,29 @@ public class WegoDataClient {
     }
     //Parsing the code
 
-    public WegoDataMeter[] getDataOnlyMeter() {
-        System.out.println("DataOnlyMeter: ");
-        return get(WegoDataMeter[].class, "meters");
+    public WegoOAuthUser getWegoOAuthUser() {
+        System.out.println("OAuth User: ");
+        return get(WegoOAuthUser.class, "oauth/user");
 
 
     }
-    public WegoDataMeter getWegoDataMeterWithID(Integer IDin) {
-        System.out.println("DataMeterWithID: ");
-        return get(WegoDataMeter.class, "meters/" + IDin);
+    public BuildingDetails getBuildingDetails() {
+        System.out.println("Building Details: ");
+        return get(BuildingDetails.class, "api/v1/wego_home/building");
 
     }
-    public ViewUtilityLogin getViewLogin(Integer IDin) {
-        return get(ViewUtilityLogin.class, "utility_logins/" + IDin);
+    public HomeMeterList[] getHomeMeterList() {
+        System.out.println("List of Meters: ");
+        return get(HomeMeterList[].class, "api/v1/wego_home/meters");
 
     }
 
 
-    public WegoDataRawData[] getMeterRawData (Integer IDin) {
-        System.out.println("MeterRawData: ");
-        return get(WegoDataRawData[].class, "meters/" + IDin + "/raw_data");
-
-
-    }
-    public WegoRawDataPoint getMeterRawDataPoint (Integer IDin, Integer IDinn) {
-        System.out.println("MeterRawDataPoint: ");
-        return get(WegoRawDataPoint.class, "meters/" + IDin + "/raw_data/" + IDinn);
+    public HomeRawDataByMeter[] getHomeRawDataByMeter (Integer IDin) {
+        System.out.println("Raw Data by Meter: ");
+        return get(HomeRawDataByMeter[].class, "api/v1/wego_home/meters/" + IDin + "/raw_data");
 
     }
-    public WegoRawDataPoint getMeterRawDatum (Integer IDin) {
-        System.out.println("MeterRawDatum: ");
-        return get(WegoRawDataPoint.class, "meters/" + IDin + "/latest_datum");
 
-
-    }
 }
+

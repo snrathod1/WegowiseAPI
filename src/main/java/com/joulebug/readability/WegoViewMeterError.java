@@ -5,13 +5,13 @@ package com.joulebug.readability;
  */
 public class WegoViewMeterError {
 
-    private String error;
+    private String errors;
 
-    public String getError() {
-        return error;
+    public String getErrors() {
+        return errors;
     }
 
-    public void setError(String error) {
-        this.error = error;
+    public void setErrors(String errors) {
+        this.errors = errors;
     }
 }
