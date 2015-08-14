@@ -15,6 +15,9 @@ import java.util.Scanner;
  */
 public class WegoHomeClient {
 
+    /*
+     * This method receives authorization to use the Wegowise API
+     */
     public WegoHomeClient(WegoClient myWegoClient) {
         myWegoClient.run();
     }
