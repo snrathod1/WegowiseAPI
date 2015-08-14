@@ -18,21 +18,21 @@ import java.util.Scanner;
  *
  */
 
-public class WegoDataClient {
-    /*
-     * This method receives authorization to use the Wegowise API
-     */
-    public WegoDataClient(WegoClient myWegoClient) {
-        myWegoClient.run();
+public class WegoDataClient extends WegoClient {
+
+
+    WegoDataClient(String key, String secret) {
+        super(key,secret);
     }
+
     /*
     * This method gets data from all of the meters owned
     * @param myWegoClient to use the get method to parse data
     * @return parsed data of your meters
      */
-    public WegoDataMeter[] getDataOnlyMeter(WegoClient myWegoClient) {
+    public WegoDataMeter[] getDataOnlyMeter() {
         System.out.println("DataOnlyMeter: ");
-        return myWegoClient.get(WegoDataMeter[].class, "api/v1/wego_data/meters");
+        return get(WegoDataMeter[].class, "api/v1/wego_data/meters");
 
 
     }
@@ -42,9 +42,9 @@ public class WegoDataClient {
     * @param IDin is the ID of your meter
     * @return parsed data of that particular meter
      */
-    public WegoDataMeter getWegoDataMeterWithID(WegoClient myWegoClient, Integer IDin) {
+    public WegoDataMeter getWegoDataMeterWithID(Integer IDin) {
         System.out.println("DataMeterWithID: ");
-        return myWegoClient.get(WegoDataMeter.class, "api/v1/wego_data/meters/" + IDin);
+        return get(WegoDataMeter.class, "api/v1/wego_data/meters/" + IDin);
 
     }
     /*
@@ -53,8 +53,8 @@ public class WegoDataClient {
     * @param IDin is the ID of your meter
     * @return parsed utility login data of that particular meter
      */
-    public ViewUtilityLogin getViewLogin(WegoClient myWegoClient, Integer IDin) {
-        return myWegoClient.get(ViewUtilityLogin.class, "api/v1/wego_data/utility_logins/" + IDin);
+    public ViewUtilityLogin getViewLogin(Integer IDin) {
+        return get(ViewUtilityLogin.class, "api/v1/wego_data/utility_logins/" + IDin);
 
     }
 
@@ -64,9 +64,9 @@ public class WegoDataClient {
     * @param IDin is the ID of your meter
     * @return parsed meter data of that particular meter across time points
      */
-    public WegoRawDataPoint[] getMeterRawData (WegoClient myWegoClient, Integer IDin) {
+    public WegoRawDataPoint[] getMeterRawData (Integer IDin) {
         System.out.println("MeterRawData: ");
-        return myWegoClient.get(WegoRawDataPoint[].class, "api/v1/wego_data/meters/" + IDin + "/raw_data");
+        return get(WegoRawDataPoint[].class, "api/v1/wego_data/meters/" + IDin + "/raw_data");
 
 
     }
@@ -77,9 +77,9 @@ public class WegoDataClient {
     * @param IDinn is the ID of that data point
     * @return parsed data of that particular meter at a certain time point
      */
-    public WegoRawDataPoint getMeterRawDataPoint (WegoClient myWegoClient, Integer IDin, Integer IDinn) {
+    public WegoRawDataPoint getMeterRawDataPoint (Integer IDin, Integer IDinn) {
         System.out.println("MeterRawDataPoint: ");
-        return myWegoClient.get(WegoRawDataPoint.class, "api/v1/wego_data/meters/" + IDin + "/raw_data/" + IDinn);
+        return get(WegoRawDataPoint.class, "api/v1/wego_data/meters/" + IDin + "/raw_data/" + IDinn);
 
     }
     /*
@@ -88,9 +88,9 @@ public class WegoDataClient {
     * @param IDin is the ID of your meter
     * @return parsed data of that particular meter at the lastest time point
      */
-    public WegoRawDataPoint getMeterRawDatum (WegoClient myWegoClient, Integer IDin) {
+    public WegoRawDataPoint getMeterRawDatum (Integer IDin) {
         System.out.println("MeterRawDatum: ");
-        return myWegoClient.get(WegoRawDataPoint.class, "api/v1/wego_data/meters/" + IDin + "/latest_datum");
+        return get(WegoRawDataPoint.class, "api/v1/wego_data/meters/" + IDin + "/latest_datum");
 
 
     }
