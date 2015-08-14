@@ -13,23 +13,22 @@ import java.util.Scanner;
  * @author shraddharathod
  * @since 8/12/15.
  */
-public class WegoHomeClient {
+public class WegoHomeClient extends WegoClient {
 
-    /*
-     * This method receives authorization to use the Wegowise API
-     */
-    public WegoHomeClient(WegoClient myWegoClient) {
-        myWegoClient.run();
+
+    WegoHomeClient(String key, String secret) {
+        super(key,secret);
     }
+
 
     /*
     * This method shows the OAuth user.
     * @param myWegoClient to use the get method to parse data
     * @return parsed OAuth user data
      */
-    public WegoOAuthUser getWegoOAuthUser(WegoClient myWegoClient) {
+    public WegoOAuthUser getWegoOAuthUser() {
         System.out.println("OAuth User: ");
-        return myWegoClient.get(WegoOAuthUser.class, "oauth/user");
+        return get(WegoOAuthUser.class, "oauth/user");
 
 
     }
@@ -38,9 +37,9 @@ public class WegoHomeClient {
     * @param myWegoClient to use the get method to parse data
     * @return parsed BUilding details data
      */
-    public BuildingDetails getBuildingDetails(WegoClient myWegoClient) {
+    public BuildingDetails getBuildingDetails() {
         System.out.println("Building Details: ");
-        return myWegoClient.get(BuildingDetails.class, "api/v1/wego_home/building");
+        return get(BuildingDetails.class, "api/v1/wego_home/building");
 
     }
     /*
@@ -48,9 +47,9 @@ public class WegoHomeClient {
     * @param myWegoClient to use the get method to parse data
     * @return parsed home meter list
      */
-    public HomeMeterList[] getHomeMeterList(WegoClient myWegoClient) {
+    public HomeMeterList[] getHomeMeterList() {
         System.out.println("List of Meters: ");
-        return myWegoClient.get(HomeMeterList[].class, "api/v1/wego_home/meters");
+        return get(HomeMeterList[].class, "api/v1/wego_home/meters");
 
     }
 
@@ -59,9 +58,9 @@ public class WegoHomeClient {
     * @param myWegoClient to use the get method to parse data
     * @return parsed OAuth user data
      */
-    public HomeRawDataByMeter[] getHomeRawDataByMeter (WegoClient myWegoClient, Integer IDin) {
+    public HomeRawDataByMeter[] getHomeRawDataByMeter (Integer IDin) {
         System.out.println("Raw Data by Meter: ");
-        return myWegoClient.get(HomeRawDataByMeter[].class, "api/v1/wego_home/meters/" + IDin + "/raw_data");
+        return get(HomeRawDataByMeter[].class, "api/v1/wego_home/meters/" + IDin + "/raw_data");
 
     }
 
