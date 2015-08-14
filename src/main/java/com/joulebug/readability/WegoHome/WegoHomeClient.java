@@ -20,31 +20,28 @@ public class WegoHomeClient extends WegoClient {
         super(key,secret);
     }
 
-
     /*
     * This method shows the OAuth user.
-    * @param myWegoClient to use the get method to parse data
     * @return parsed OAuth user data
      */
     public WegoOAuthUser getWegoOAuthUser() {
         System.out.println("OAuth User: ");
         return get(WegoOAuthUser.class, "oauth/user");
 
-
     }
+
     /*
     * This method shows the Building details.
-    * @param myWegoClient to use the get method to parse data
-    * @return parsed BUilding details data
+    * @return parsed Building details data
      */
     public BuildingDetails getBuildingDetails() {
         System.out.println("Building Details: ");
         return get(BuildingDetails.class, "api/v1/wego_home/building");
 
     }
+
     /*
     * This method shows a list of meters in your home.
-    * @param myWegoClient to use the get method to parse data
     * @return parsed home meter list
      */
     public HomeMeterList[] getHomeMeterList() {
@@ -54,9 +51,8 @@ public class WegoHomeClient extends WegoClient {
     }
 
     /*
-    * This method shows the OAuth user.
-    * @param myWegoClient to use the get method to parse data
-    * @return parsed OAuth user data
+    * This method gets all the raw data of a specific meter with ID
+    * @return parsed parsed meter data of that particular meter across time points
      */
     public HomeRawDataByMeter[] getHomeRawDataByMeter (Integer IDin) {
         System.out.println("Raw Data by Meter: ");
