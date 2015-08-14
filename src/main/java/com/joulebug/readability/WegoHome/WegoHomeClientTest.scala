@@ -9,7 +9,7 @@ object WegoHomeClientTest {
 
   def WHCTest() {
 
-    val WHC = new WegoHomeClient("c93fc5fd39566db90367f6855415745e180623a8", "3ad26d32cbaf0d34d4cc89c40c3bd29c30259275")
+    val WHC = new WegoHomeClient("your key", "your secret")
 
     WHC.run()
 

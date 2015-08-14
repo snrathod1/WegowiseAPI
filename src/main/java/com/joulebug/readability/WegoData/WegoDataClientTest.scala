@@ -1,6 +1,5 @@
 package com.joulebug.readability.WegoData
 
-import WegoRawDataPoint
 
 /**
  * Created by shraddharathod on 8/7/15.
