@@ -1,7 +1,6 @@
-package com.joulebug.readability
+package com.joulebug.readability.WegoData
 
-import com.google.gson.Gson
-import com.joulebug.readability.{WegoDataClient}
+import WegoRawDataPoint
 
 /**
  * Created by shraddharathod on 8/7/15.
@@ -117,5 +116,3 @@ object WegoDataClientTest {
     }
   }
 }
-
-

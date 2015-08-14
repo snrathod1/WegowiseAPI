@@ -1,4 +1,4 @@
-package com.joulebug.readability;
+package com.joulebug.readability.WegoData;
 
 /**
  * Created by shraddharathod on 6/30/15.

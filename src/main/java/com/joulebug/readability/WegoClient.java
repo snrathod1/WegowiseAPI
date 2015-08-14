@@ -1,6 +1,7 @@
 package com.joulebug.readability;
 
 import com.google.gson.Gson;
+import com.joulebug.readability.*;
 import org.scribe.builder.ServiceBuilder;
 import org.scribe.model.*;
 import org.scribe.oauth.OAuthService;
@@ -8,13 +9,14 @@ import org.scribe.oauth.OAuthService;
 import java.util.Scanner;
 
 /**
- * Created by shraddharathod on 7/16/15.
+ * This WegoClient program authorizes access to WegoWise's API from which it receives and parses data.
  *
+ * @author Shraddha Rathod
+ * @since 8/14/15.
  */
+public class WegoClient {
 
-//gets data from WegoWise API and parses it
-public class WegoDataClient {
-    private static final String PROTECTED_RESOURCE_URL = "https://www.wegowise.com/api/v1/wego_data/";
+    private static final String PROTECTED_RESOURCE_URL = "https://www.wegowise.com/";
 
     private String oauthKey;
     private String oauthSecret;
@@ -24,24 +26,29 @@ public class WegoDataClient {
     public OAuthService service;
 
 
-    //input key and secret from your app
-    public WegoDataClient(String key, String secret) {
+    public WegoClient(String key, String secret) {
         this.oauthKey = key;
         this.oauthSecret = secret;
         this.service = new ServiceBuilder()
-             .provider(WegowiseApi.class)
-             .apiKey(this.oauthKey)
-             .apiSecret(this.oauthSecret)
-             .build();
-
+                .provider(WegowiseApi.class)
+                .apiKey(this.oauthKey)
+                .apiSecret(this.oauthSecret)
+                .build();
     }
     //token request, verification, and data retrieval; parsing data
+    /*
+     * This method runs the Request, Verification, and Access methods. This is to authorize access.
+     * @parameters none
+     */
     public void run() {
         Request();
         Verification();
         Access();
     }
-    //Request
+    /*
+    * This method requests a token from Wegowise and if obtained, requests user to authorize Scribe with a link.
+    * @parameters: none
+     */
     public void Request() {
 
         System.out.println();
@@ -61,7 +68,10 @@ public class WegoDataClient {
 
     }
 
-    //Verifier
+    /*
+     * In this method, the user pastes the verification code obtained from authorization in the Request method.
+     * @parameters: none
+     */
     public void Verification() {
         Scanner in = new Scanner(System.in);
         System.out.println("And paste the verifier here");
@@ -71,8 +81,11 @@ public class WegoDataClient {
         this.verifier = verifier;
 
     }
+    /*
+     * In this method, the request token and the verifier are traded for the access token
+     * @param none
+     */
 
-    // Trade the Request Token and Verifier for the Access Token
     public void Access() {
         Token accessToken = this.service.getAccessToken(requestToken, verifier);
         //Got the access token
@@ -80,19 +93,25 @@ public class WegoDataClient {
         this.accessToken = accessToken;
     }
 
+    /*
+     * In this method, the request token and the verifier are traded for the access token
+     * @param name - this class where the data is parsed
+     * @param String - the end of the url to access the data in Wegowise
+     * @return parsed data
+     */
     protected<T> T get(Class<T> name, String end) {
         T result = null;
         OAuthRequest request = new OAuthRequest(Verb.GET, PROTECTED_RESOURCE_URL + end);
         this.service.signRequest(accessToken, request);
         Response response = request.send();
-        //System.out.println(response.getBody());
+        System.out.println(response.getBody());
         //if response results in a 200 code
         if (response.isSuccessful()) {
             try {
-               Gson gson = new Gson();
-               String json = response.getBody();
-               T data = gson.fromJson(json, name);     //parses Json
-               return data;
+                Gson gson = new Gson();
+                String json = response.getBody();
+                T data = gson.fromJson(json, name);     //parses Json
+                return data;
 
             } catch (com.google.gson.JsonSyntaxException e) {
                 System.out.println("Invalid JSon");
@@ -122,40 +141,6 @@ public class WegoDataClient {
         }
         return result;
     }
-    //Parsing the code
-
-    public WegoDataMeter[] getDataOnlyMeter() {
-        System.out.println("DataOnlyMeter: ");
-        return get(WegoDataMeter[].class, "meters");
 
 
-    }
-    public WegoDataMeter getWegoDataMeterWithID(Integer IDin) {
-        System.out.println("DataMeterWithID: ");
-        return get(WegoDataMeter.class, "meters/" + IDin);
-
-    }
-    public ViewUtilityLogin getViewLogin(Integer IDin) {
-        return get(ViewUtilityLogin.class, "utility_logins/" + IDin);
-
-    }
-
-
-    public WegoRawDataPoint[] getMeterRawData (Integer IDin) {
-        System.out.println("MeterRawData: ");
-        return get(WegoRawDataPoint[].class, "meters/" + IDin + "/raw_data");
-
-
-    }
-    public WegoRawDataPoint getMeterRawDataPoint (Integer IDin, Integer IDinn) {
-        System.out.println("MeterRawDataPoint: ");
-        return get(WegoRawDataPoint.class, "meters/" + IDin + "/raw_data/" + IDinn);
-
-    }
-    public WegoRawDataPoint getMeterRawDatum (Integer IDin) {
-        System.out.println("MeterRawDatum: ");
-        return get(WegoRawDataPoint.class, "meters/" + IDin + "/latest_datum");
-
-
-    }
 }

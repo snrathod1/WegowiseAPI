@@ -1,7 +1,5 @@
-package com.joulebug.readability;
+package com.joulebug.readability.WegoData;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
 /**
  * Created by shraddharathod on 6/30/15.
  */

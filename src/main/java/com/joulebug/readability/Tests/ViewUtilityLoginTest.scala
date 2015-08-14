@@ -1,7 +1,7 @@
 package com.joulebug.readability.Tests
 
 import com.google.gson.Gson
-import com.joulebug.readability.ViewUtilityLogin
+import com.joulebug.readability.WegoData.ViewUtilityLogin
 
 /**
  * Created by shraddharathod on 6/30/15.

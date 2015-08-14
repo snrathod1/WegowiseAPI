@@ -1,6 +1,6 @@
 package com.joulebug.readability.WegoHome
 
-import com.joulebug.readability.{WegoDataMeter, WegoDataClient}
+//import com.joulebug.readability.{WegoHomeClient}
 
 /**
  * Created by shraddharathod on 8/12/15.
